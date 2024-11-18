@@ -27,13 +27,13 @@
  */
 package org.wltea.analyzer.core;
 
+import java.util.stream.Collectors;
 import org.wltea.analyzer.cfg.Configuration;
 import org.wltea.analyzer.cfg.DefaultConfig;
 import org.wltea.analyzer.dic.Dictionary;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -111,14 +111,13 @@ public final class IKSegmenter {
      * @return List<ISegmenter>
      */
     private List<ISegmenter> loadSegmenters() {
-        List<ISegmenter> segmenters = new ArrayList<>(4);
-        // 处理字母的子分词器
-        segmenters.add(new LetterSegmenter());
-        // 处理中文数量词的子分词器
-        segmenters.add(new CN_QuantifierSegmenter());
-        // 处理中文词的子分词器
-        segmenters.add(new CJKSegmenter());
-        return segmenters;
+        return this.cfg.getSegmenterClassNames().stream().map(s -> {
+            try {
+                return (ISegmenter) Class.forName(s).getDeclaredConstructor().newInstance();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).collect(Collectors.toList());
     }
 
     /**

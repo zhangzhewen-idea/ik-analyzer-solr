@@ -37,7 +37,7 @@ import java.util.*;
 /**
  * 分词器上下文状态
  */
-class AnalyzeContext {
+public class AnalyzeContext {
 
     // 默认缓冲区大小
     private static final int BUFF_SIZE = 4096;

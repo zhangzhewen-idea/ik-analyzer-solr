@@ -38,7 +38,7 @@ import java.util.Set;
 /**
  * 中文数量词子分词器
  */
-class CN_QuantifierSegmenter implements ISegmenter {
+public class CN_QuantifierSegmenter implements ISegmenter {
 
     // 子分词器标签
     private static final String SEGMENTER_NAME = "QUAN_SEGMENTER";
@@ -70,7 +70,7 @@ class CN_QuantifierSegmenter implements ISegmenter {
     private final List<Hit> countHits;
 
 
-    CN_QuantifierSegmenter() {
+    public CN_QuantifierSegmenter() {
         nStart = -1;
         nEnd = -1;
         this.countHits = new LinkedList<>();

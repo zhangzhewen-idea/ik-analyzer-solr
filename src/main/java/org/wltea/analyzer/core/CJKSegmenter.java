@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * 中文-日韩文子分词器
  */
-class CJKSegmenter implements ISegmenter {
+public class CJKSegmenter implements ISegmenter {
 
     // 子分词器标签
     private static final String SEGMENTER_NAME = "CJK_SEGMENTER";
@@ -45,7 +45,7 @@ class CJKSegmenter implements ISegmenter {
     private final List<Hit> tmpHits;
 
 
-    CJKSegmenter() {
+    public CJKSegmenter() {
         this.tmpHits = new LinkedList<>();
     }
 

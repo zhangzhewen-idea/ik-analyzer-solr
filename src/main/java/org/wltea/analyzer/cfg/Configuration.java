@@ -93,4 +93,19 @@ public interface Configuration {
      */
     List<String> getExtStopWordDictionarys();
 
+
+    /**
+     * 获取扩展词库数据
+     *
+     * @return 词库数据
+     */
+    List<String> getExtDictionaryData();
+
+
+    /**
+     * 获取IK子分词器的class全称，用于注册IK子分词器
+     *
+     * @return IK子分词器的class全称列表
+     */
+    List<String> getSegmenterClassNames();
 }

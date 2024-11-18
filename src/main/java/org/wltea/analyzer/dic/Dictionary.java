@@ -75,6 +75,7 @@ public class Dictionary {
         this.loadMainDict();
         this.loadStopWordDict();
         this.loadQuantifierDict();
+        this.addWords(cfg.getExtDictionaryData());
     }
 
     /**
@@ -152,7 +153,7 @@ public class Dictionary {
             for (String word : words) {
                 if (word != null) {
                     // 批量加载词条到主内存词典中
-                    singleton._MainDict.fillSegment(word.trim().toLowerCase().toCharArray());
+                    _MainDict.fillSegment(word.trim().toLowerCase().toCharArray());
                 }
             }
         }
@@ -323,6 +324,9 @@ public class Dictionary {
      * 加载量词词典
      */
     private void loadQuantifierDict() {
+        if (cfg.getQuantifierDictionary() == null) {
+            return;
+        }
         // 建立一个量词典实例
         _QuantifierDict = new DictSegment((char) 0);
         // 读取量词词典文件

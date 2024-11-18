@@ -32,6 +32,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import org.wltea.analyzer.core.CJKSegmenter;
+import org.wltea.analyzer.core.CN_QuantifierSegmenter;
+import org.wltea.analyzer.core.LetterSegmenter;
 
 /**
  * Configuration 默认实现
@@ -187,6 +190,17 @@ public class DefaultConfig implements Configuration {
             }
         }
         return extStopWordDictFiles;
+    }
+
+    @Override
+    public List<String> getExtDictionaryData() {
+        return null;
+    }
+
+    @Override
+    public List<String> getSegmenterClassNames() {
+        return List.of(LetterSegmenter.class.getName(), CJKSegmenter.class.getName(),
+            CN_QuantifierSegmenter.class.getName());
     }
 
 
